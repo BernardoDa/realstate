@@ -36,6 +36,7 @@
     transition-property: background-color;
     transition-duration: .3s;
     text-align: center;
+    border-radius: 1.6rem;
 
     @include tablet {
         width: auto;
@@ -49,4 +50,26 @@
     display: grid;
     gap: $espaciado;
     grid-template-columns: repeat($columnas, 1fr);
+}
+
+@mixin heading($salto: false) {
+    font-weight: 400;
+
+    span{
+        font-weight: 700;
+
+        @if($salto){
+            display: block;
+
+        }
+    }
+
+    &::after{
+        content: '';
+        display: block;
+        width: 15rem;
+        height: 1rem;
+        margin-top: .5rem;
+        background-image: linear-gradient(to right, v.$primario 0%, v.$primario 50%, lighten(v.$primario, 20%) 50%, lighten(v.$primario, 20%)100%);
+    }
 }
